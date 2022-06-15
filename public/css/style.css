@@ -1,0 +1,16 @@
+#titulo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#tituloibm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#btnnewbook{
+    margin-left: 48%;
+}

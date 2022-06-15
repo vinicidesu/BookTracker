@@ -1,33 +1,16 @@
-const url = require('./config/db.config');
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+import { url } from "./config/db.js"
+import express, { Router } from "express";
+import mongoose from "mongoose";
+import bodyParser from "body-parser";
+import { routes } from "./routes/routes.js";
+
 const app = express();
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true}));
-var bookRoute = require('./routes/bookRoute');
-const Book = require('./model/Book');
-
-//Registra os livros
-app.post('/book',(req, res) => {
-        const newBook = new Book();
-        newBook.name = req.body.name;
-        newBook.author = req.body.author;
-        newBook.save();
-        res.json({ success: true, name: newBook.name});
-});
-
-//Retorna os livros
-app.get('/', (req, res) => {
-    Book.find({}, function(err, books){
-        if(err){
-            res.send("Error");
-            next();
-        }
-        res.json(books);
-    });
-});
+app.use(express.static('public'));
+app.set('view engine', 'ejs');
+app.use(routes);
 
 mongoose.connect(url)
     const con = mongoose.connection;
@@ -38,5 +21,3 @@ mongoose.connect(url)
 app.listen(8080, () => {
     console.log('Express Server listening on port 8080');
 });
-
-module.exports = mongoose;

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBM BookTracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<nav class="navbar navbar-light bg-dark">
+    <a class="navbar-brand" href="/"></a>
+</nav>
+<body style="background-color:lemonchiffon">
+    <h1 id="tituloibm">IBM BookTracker</h1>
+    <a href="/books/new" class="btn btn-dark" id="btnnewbook">New Book</a>
+    <br>
+    <br>
+    <% books.forEach(books => { %>
+    <div class="container">
+            <div class="card text-bg-secondary p-2 mb-3" style="max-width:450px; margin-left: auto; margin-right: auto;">
+                <div class="card-body">
+                    <h4 class="d-flex card-title justify-content-center">Título: <%= books.name %></h4>
+                    <h5 class="d-flex card-subtitle mb-2 text-muted justify-content-center">Autor: <%= books.author %></h5>
+                    <% if(books.status == 0){ %>
+                        <h5 class="d-flex card-subtitle mb-2 text-muted justify-content-center">Status: Wishlist</h5>
+                    <% } if(books.status == 1){ %>
+                        <h5 class="d-flex card-subtitle mb-2 text-muted justify-content-center">Status: Reading</h5>
+                    <% } if(books.status == 2){ %>
+                        <h5 class="d-flex card-subtitle mb-2 text-muted justify-content-center">Status: Completed</h5>
+                    <% }%>
+                    <p class="d-flex fw-light justify-content-center">id: <%= books.id %></p>
+                    <form method="post" action="/delete/:id" class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-dark">Delete</button>
+                    </form>
+                    <br>
+                    <a href="/books/update/:id" class="d-flex btn btn-dark justify-content-center" style="max-width:80px; margin-left: auto; margin-right: auto;" id="btnupbook">Update</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% }) %>  
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+</body>
+</html>
