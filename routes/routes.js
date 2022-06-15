@@ -51,9 +51,11 @@ routes.post("/delete/:id", (req, res) => {
 routes.put("/books/:id", (req, res) => {
     const id = req.params.id;
     const status = req.body.status;
+    const nota = req.body.nota;
     Book.updateOne(
         {_id: id},
-        {status}
+        {status},
+        {nota}
     ).then(
         res.redirect("/"));
 });

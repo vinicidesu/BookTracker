@@ -17,11 +17,6 @@ const BookSchema = new Schema({
         unique: false,
         required: true
     },
-    dateFinished: {
-        type: Date,
-        unique: false,
-        required: false
-    },
     nota:{
         type: Number,
         unique: false,

@@ -29,8 +29,11 @@
                         <h5 class="d-flex card-subtitle mb-2 text-muted justify-content-center">Status: Reading</h5>
                     <% } if(books.status == 2){ %>
                         <h5 class="d-flex card-subtitle mb-2 text-muted justify-content-center">Status: Completed</h5>
+                        <h5 class="d-flex card-subtitle mb-2 text-muted justify-content-center " style="max-width:200px; margin-left: auto; margin-right: auto;">Data Conclusão: <%= books.updatedAt %></h5>
+                        <h5 class="d-flex card-subtitle mb-2 text-muted justify-content-center">Nota: <%= books.nota %></h5>
                     <% }%>
                     <p class="d-flex fw-light justify-content-center">id: <%= books.id %></p>
+                    <p class="d-flex fw-light justify-content-center" style="max-width:200px; margin-left: auto; margin-right: auto;">Adicionado em: <%= books.createdAt %></p>
                     <form method="post" action="/delete/:id" class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-dark">Delete</button>
                     </form>
