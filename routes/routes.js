@@ -32,6 +32,10 @@ routes.post('/books',(req, res) => {
         newBook.name = req.body.name;
         newBook.author = req.body.author;
         newBook.status = req.body.status;
+        newBook.nota = req.body.nota;
+        if(newBook.nota == undefined){
+            newBook.nota == 0
+        }
         newBook.save()
         .then(() => {
             res.redirect('/');
